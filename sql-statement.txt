@@ -1,0 +1,10 @@
+<!-- 
+use sql statements to generate geometry (polygon, polylin, point)
+-->
+//make polyline
+select data01.gid, data01.times, st_makeline(st_makepoint (data01.location1y,data01.location1x),st_makepoint(data01.location2y,data01.location2x))
+from (select * from twitter) as data01
+
+//make polygon
+select *,  ST_MakePolygon(ST_GeomFromText('LINESTRING('|| data01.location1y || ' ' ||  data01.location1x || ',' || data01.location2y || ' ' || data01.location2x || ',' || data01.location3y || ' '  || data01.location3x || ',' || data01.location4y || ' ' || data01.location4x || ',' || data01.location1y ||  ' ' || data01.location1x ||')'))
+from (select * from twitter) as data01
