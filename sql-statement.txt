@@ -1,5 +1,5 @@
-<!-- 
-use sql statements to generate geometry (polygon, polylin, point)
+<!-- keep updated
+use sql statements to generate geometry (polygon, polylin, point)...
 -->
 //make polyline
 select data01.gid, data01.times, st_makeline(st_makepoint (data01.location1y,data01.location1x),st_makepoint(data01.location2y,data01.location2x))
